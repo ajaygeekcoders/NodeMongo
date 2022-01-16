@@ -23,13 +23,3 @@ routes(app);
 app.listen(PORT, function(){
     console.log(`Server started at port ${PORT}`);
 })
-
-
-function add(a){
-    function adds(b){
-        return a + b;
-    }
-    return adds;
-}
-
-console.log(add(10)(10));
