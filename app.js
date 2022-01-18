@@ -20,6 +20,15 @@ app.use(logging);
 let routes = require('./src/routes');
 routes(app);
 
+app.use((req, res, next) => {
+    res.status(404).send({ errMsg: "Page Not Found"});
+})
+
+app.use((req, res, next) => {
+    res.status(404).send({ errMsg: "Page Not Founds"});
+})
+
+
 app.listen(PORT, function(){
     console.log(`Server started at port ${PORT}`);
 })
