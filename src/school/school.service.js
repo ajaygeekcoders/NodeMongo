@@ -9,6 +9,7 @@ class SchoolService {
     }
 
     getAllSchools(filter = {}) {
+        filter['isActive'] = true;
         return SchoolModel.find(filter);
     }
 
@@ -16,8 +17,13 @@ class SchoolService {
         return SchoolModel.findOne(filter);
     }
 
-    updateSchool(query = {}, data = {}) {
-        return SchoolModel.updateOne(query, { $set: data });
+    updateSchool(query = {}, detail = {}) {
+        detail['updatedAt'] = new Date();
+        return SchoolModel.updateOne(query, { $set: detail });
+    }
+
+    removeSingleSchool(filter = {}) {
+        return SchoolModel.deleteOne(filter);
     }
 
 }
