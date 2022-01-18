@@ -10,6 +10,7 @@ class UserController {
             res.status(400).send({ errMsg: err.message })
         }
     }
+    
 }
 
 module.exports = new UserController();
