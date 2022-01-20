@@ -5,6 +5,7 @@ module.exports = {
         DETAIL_FETCHED: "Detail fetched successfully.",
         DETAIL_REMOVED: "Detail removed successfully.",
         SCHOOL_ALREADY_EXIST: "School already exist.",
+        SCHOOL_NOT_EXIST: "School not exist.",
         ROLL_NO_ALREADY_EXIST: "Student roll no. already exist.",
         EMAIL_ALREADY_EXIST: "Email already exist.",
         EMAIL_NOT_EXIST: "Email not exist.",

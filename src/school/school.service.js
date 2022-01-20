@@ -14,6 +14,7 @@ class SchoolService {
     }
 
     getSingleSchool(filter = {}) {
+        filter['isActive'] = true;
         return SchoolModel.findOne(filter);
     }
 

@@ -14,6 +14,7 @@ class UserService {
     }
 
     getSingleUser(filter = {}) {
+        filter['isActive'] = true;
         return UserModel.findOne(filter);
     }
 

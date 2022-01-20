@@ -9,6 +9,8 @@ class SchoolController {
             if (exist) {
                 res.status(400).send({ errMsg: Constants.MESSAGE.SCHOOL_ALREADY_EXIST });
             } else {
+                req.body['createdBy'] = req.user._id;
+                req.body['updatedBy'] = req.user._id;
                 let data = await SchoolService.addSchool(req.body);
                 res.status(200).send({ data: data });
             }
@@ -43,12 +45,14 @@ class SchoolController {
             let exist = await SchoolService.getSingleSchool({ name: req.body.name });
             if (exist) {
                 if (exist._id.toString() === _id.toString()) {
+                    req.body['updatedBy'] = req.user._id;
                     let data = await SchoolService.updateSchool({ _id }, req.body);
                     res.status(200).send({ data: data, message: Constants.MESSAGE.DETAIL_UPDATED });
                 } else {
                     res.status(400).send({ errMsg: Constants.MESSAGE.SCHOOL_ALREADY_EXIST });
                 }
             } else {
+                req.body['updatedBy'] = req.user._id;
                 let data = await SchoolService.updateSchool({ _id }, req.body);
                 res.status(200).send({ data: data, message: Constants.MESSAGE.DETAIL_UPDATED });
             }
