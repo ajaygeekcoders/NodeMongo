@@ -38,9 +38,10 @@ class AuthController {
     } 
     
     async resetPassword(req, res, next){
+        let email = req.body.email;
         let resetCode = req.body.resetCode;
         let password = req.body.password;
-        let userDetail = await UserService.getSingleUser({ resetCode });
+        let userDetail = await UserService.getSingleUser({ email, resetCode });
         if(userDetail) {
             let update = await UserService.updateUser({ _id: userDetail._id }, { resetCode : "", password  });
             res.status(200).send({ message: 'Password changed successfully' })

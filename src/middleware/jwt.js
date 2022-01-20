@@ -5,7 +5,7 @@ const secret = process.env.JWT_KEY
 class JWT {
 
     generateToken(payload) {
-        return jwt.sign(payload, secret, { expiresIn: 20 });
+        return jwt.sign(payload, secret, { expiresIn: 60*60 });
     }
 
     verifyToken(token, callback) {
