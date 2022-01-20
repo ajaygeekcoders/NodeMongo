@@ -10,7 +10,7 @@ class StudentService {
 
     getAllStudents(filter = {}) {
         filter['isActive'] = true;
-        return StudentModel.find(filter);
+        return StudentModel.find(filter).populate({ path: "schoolId", select:"name" })
     }
 
     getSingleStudent(filter = {}) {

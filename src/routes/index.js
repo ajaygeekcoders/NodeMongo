@@ -2,6 +2,8 @@ const AuthRoutes = require('../auth/auth.route');
 const UserRoutes = require('../user/user.route');
 const SchoolRoutes = require('../school/school.route');
 const StudentRoutes = require('../student/student.route');
+const ReportRoutes = require('../report/report.route');
+
 const TokenValidator = require('../middleware/tokenValidator');
 module.exports = function(app){
     app.use('/api/auth', AuthRoutes);
@@ -9,4 +11,6 @@ module.exports = function(app){
     app.use('/api/user', UserRoutes);
     app.use('/api/school', SchoolRoutes);
     app.use('/api/student', StudentRoutes);
+    app.use('/api/report', ReportRoutes);
+
 }
