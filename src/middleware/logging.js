@@ -1,6 +1,9 @@
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
+
+const logPath = path.join(__dirname, '../../logs/access.log');
+
 const loggerFun = (tokens, req, res) => {
     return [
         tokens.method(req, res),
@@ -12,8 +15,7 @@ const loggerFun = (tokens, req, res) => {
 }
 
 // create a write stream (in append mode)
-const accessLogStream = fs.createWriteStream(path.join(__dirname, '../../logs/access.log'), { flags: 'a' })
-
+const accessLogStream = fs.createWriteStream(logPath, { flags: 'a' })
 
 module.exports = (app) => {
     app.use(morgan(loggerFun, { stream: accessLogStream }))
