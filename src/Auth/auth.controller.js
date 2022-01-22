@@ -13,16 +13,12 @@ class AuthController {
             userDetail['password'] = null;
             let payload = { _id: userDetail._id };
             let token = JWT.generateToken(payload);
+            req.logger.info('Logged in successfully');
             res.status(200).send({ data: userDetail, token, message: 'Logged in successfully' })
         } else {
+            req.logger.error(Constant.MESSAGE.INVALID_LOGIN_CRED)
             res.status(400).send({ message: Constant.MESSAGE.INVALID_LOGIN_CRED })
         }
-    }
-    
-    verifyToken(req, res, next) {
-        let authToken = req.header.Authorization;
-        let decode = JWT.verifyToken(authToken);
-        console.log({decode});
     }
 
     async forgotPassword(req, res, next){

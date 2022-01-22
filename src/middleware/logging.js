@@ -1,6 +1,21 @@
-// use to log the menthos of api and the path of api
+const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
+const loggerFun = (tokens, req, res) => {
+    return [
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res),
+        tokens.res(req, res, 'content-length'), '-',
+        tokens['response-time'](req, res), 'ms',
+    ].join(' ')
+}
 
-module.exports =  (req, res, next) => {
-    console.log(`${req.method} - ${req.path}`);
-    next();
+// create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(path.join(__dirname, '../../logs/access.log'), { flags: 'a' })
+
+
+module.exports = (app) => {
+    app.use(morgan(loggerFun, { stream: accessLogStream }))
+    app.use(morgan(loggerFun));
 }
