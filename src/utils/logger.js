@@ -33,7 +33,7 @@ const logger = new winston.createLogger({
     ),
     levels: levels,
     transports: [
-        new (winston.transports.Console)({ timestamp: true, colorize: true }),
+        new (winston.transports.Console)({ timestamp: true, colorize: true }),  // can comment this line, if you want to stop terminal console log. But still log will written
         new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
         new winston.transports.File({ filename: 'logs/api.log' }),
     ]

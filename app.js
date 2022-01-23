@@ -41,4 +41,6 @@ app.use((req, res, next) => {
 app.listen(PORT, function(){
     logger.info(`Server started at port ${PORT}`);
     console.log(`Server started at port ${PORT}`);
-})
+});
+
+module.exports = app;
