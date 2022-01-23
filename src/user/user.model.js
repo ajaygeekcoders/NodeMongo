@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    name: { type: String, require: true },
-    email: { type: String, require: true, unique: { index: true } },
-    password: { type: String, require: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: { index: true } },
+    password: { type: String, required: true },
     isActive: { type: Boolean, default: true },
     resetCode: { type: String, default: "" },
     createdAt: { type: Date, default: Date.now() },
