@@ -1,1 +1,1 @@
-require('./Auth/login.test');
+require('./auth/login.test');
