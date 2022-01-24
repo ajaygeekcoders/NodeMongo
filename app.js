@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
 const logging = require('./src/middleware/logging');
 const dbConnect = require('./src/config/db');
 const logger = require('./src/utils/logger');
 const { customLogger } = require('./src/utils/customLogger');
+const swaggerDocument = require('./swagger');
+
 require('dotenv').config(); // Put the .env file variable to process.env object;
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +17,8 @@ app.use(bodyParser.json());
 
 // database connection
 dbConnect(process.env.DATABASE_URL); 
+
+app.use('/api-docs/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(function (req, res, next) {
 	req.logger = {}
