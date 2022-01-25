@@ -48,8 +48,8 @@ const swaggerDocument = {
             get: getAllUsers,
         },
         "/user/{_id}":{
-            put: updateUserById,
             get: getUserById,
+            put: updateUserById,
             delete: removeUserById
         }
     }

@@ -33,7 +33,6 @@ const addUser = {
                         "email": "ajay.yadav@gmail.com",
                         "password": "0000"
                     }
-
                 }
             }
         }
@@ -74,7 +73,6 @@ const updateUserById = {
                         "email": "abc@abc.com",
                         "password": "1a2b3c4d"
                     }
-
                 }
             }
         }
