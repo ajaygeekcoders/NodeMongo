@@ -18,7 +18,7 @@ module.exports = function (req, res, next) {
             return res.status(401).send({ message: "User is not active" });
         }
         req['user'] = userData;
-        console.log({ decoded, userData });
+        // console.log({ decoded, userData });
         next();
     });
 }

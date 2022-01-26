@@ -24,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.6",
     "morgan": "^1.10.0",
+    "redis": "^4.0.2",
     "swagger-ui-express": "^4.3.0",
     "winston": "^3.4.0"
   },

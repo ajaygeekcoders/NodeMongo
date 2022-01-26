@@ -1,6 +1,6 @@
 const winston = require('winston');
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, /*label, prettyPrint, splat, simple, printf*/ } = format;
+const { combine, timestamp } = format;
 
 const levels = {
     fatal: 0,
