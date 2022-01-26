@@ -33,7 +33,7 @@ const swaggerDocument = {
         }
     ],
     paths: {
-       // ...AuthRoutes,
+        ...AuthRoutes,
         ...UserRoutes
     }
 }
