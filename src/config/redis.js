@@ -43,7 +43,7 @@ redisConnect = async function () {
 }
 
 // setting key and value in redis as string with expiry
-setValue = async (key, value, expiry = 20) => {
+setValue = async (key, value, expiry = 120) => {
     try {
         // exiry in seconds
         let setData = await client.set(key, JSON.stringify(value), {
