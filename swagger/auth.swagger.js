@@ -91,10 +91,17 @@ const resetPassword = {
     ...commonDetail
 }
 
-
-
-module.exports = {
-    login,
-    forgotPassword,
-    resetPassword
+const authRoutes = {
+    "/auth/login": {
+        post: login
+    },
+    "/auth/forgot.password": {
+        post: forgotPassword
+    },
+    "/auth/reset.password": {
+        post: resetPassword
+    },
 }
+
+
+module.exports = authRoutes;

@@ -116,10 +116,16 @@ const getUserById = {
     ...commonDetails
 }
 
-module.exports = {
-    addUser,
-    updateUserById,
-    getUserById,
-    getAllUsers,
-    removeUserById
+const userRoutes = {
+    "/user/": {
+        post: addUser,
+        get: getAllUsers,
+    },
+    "/user/{_id}":{
+        get: getUserById,
+        put: updateUserById,
+        delete: removeUserById
+    }
 }
+
+module.exports = userRoutes;

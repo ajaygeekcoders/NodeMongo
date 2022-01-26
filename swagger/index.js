@@ -1,5 +1,5 @@
-const { login, forgotPassword, resetPassword } = require('./auth.swagger');
-const { addUser, updateUserById, getAllUsers, getUserById, removeUserById  } = require('./user.swagger');
+const AuthRoutes = require('./auth.swagger');
+const UserRoutes = require('./user.swagger');
 
 const swaggerDocument = {
     openapi: '3.0.1',
@@ -24,7 +24,7 @@ const swaggerDocument = {
     },
     servers: [
         {
-            url: 'http://localhost:4001/api/',
+            url: 'http://localhost:4000/api/',
             description: 'Local server'
         },
         {
@@ -33,25 +33,8 @@ const swaggerDocument = {
         }
     ],
     paths: {
-        "/auth/login": {
-            post: login
-        },
-        "/auth/forgot.password": {
-            post: forgotPassword
-        },
-        "/auth/reset.password": {
-            post: resetPassword
-        },
-
-        "/user/": {
-            post: addUser,
-            get: getAllUsers,
-        },
-        "/user/{_id}":{
-            get: getUserById,
-            put: updateUserById,
-            delete: removeUserById
-        }
+       // ...AuthRoutes,
+        ...UserRoutes
     }
 }
 
