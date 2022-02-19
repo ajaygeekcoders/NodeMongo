@@ -29,9 +29,21 @@ class SchoolController {
             if(redisDataExist){
                 data = JSON.parse(redisDataExist);
             } else {
-                data = await ReportService.getFindSchoolWithStudentCount();
+                data = await ReportService.getFindSchoolWithStudentCountPrms();
                 RedisService.addRedisKey(redisKey, data);
             }
+            return res.status(200).send({ data: data, message: Constants.MESSAGE.DETAIL_FETCHED });
+        } catch (err) {
+            res.status(400).send({ errMsg: err.message })
+        }
+    }
+
+    async getFindSchoolWithStudentCountPrms(req, res, next) {
+        try {
+            let data = [];
+            
+                data = await ReportService.getFindSchoolWithStudentCountPrms();
+             
             return res.status(200).send({ data: data, message: Constants.MESSAGE.DETAIL_FETCHED });
         } catch (err) {
             res.status(400).send({ errMsg: err.message })
